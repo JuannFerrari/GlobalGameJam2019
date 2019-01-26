@@ -87,7 +87,6 @@ scale = Vector2( 16, 1 )
 texture = ExtResource( 1 )
 
 [node name="Wardrobe" type="StaticBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 119.252, 257.054 )
 __meta__ = {
 "_edit_group_": true
@@ -117,6 +116,7 @@ scale = Vector2( 4.688, 1.875 )
 texture = ExtResource( 1 )
 
 [node name="Toys" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 629.385, 201.403 )
 __meta__ = {
 "_edit_group_": true
