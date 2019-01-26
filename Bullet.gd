@@ -11,3 +11,12 @@ func _process(delta):
 	var motion=angle_vector*VEL
 	position=position+motion*delta
 	
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+
+
+func _on_Bullet_area_entered(area):
+	print("hola")
+	queue_free()
+	area.queue_free()
