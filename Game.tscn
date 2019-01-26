@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://World.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World3.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=2]
 
 [node name="Game" type="SkeletonIK"]
