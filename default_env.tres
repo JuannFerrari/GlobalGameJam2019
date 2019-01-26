@@ -2,6 +2,7 @@
 
 [sub_resource type="ProceduralSky" id=1]
 
+<<<<<<< HEAD
 radiance_size = 4
 sky_top_color = Color( 0.0470588, 0.454902, 0.976471, 1 )
 sky_horizon_color = Color( 0.556863, 0.823529, 0.909804, 1 )
@@ -19,11 +20,14 @@ sun_angle_max = 100.0
 sun_curve = 0.05
 sun_energy = 16.0
 texture_size = 2
+=======
+>>>>>>> 272dbe5c1882f83960617a72ba31a033458722fc
 
 [resource]
 
 background_mode = 2
 background_sky = SubResource( 1 )
+<<<<<<< HEAD
 background_sky_custom_fov = 0.0
 background_color = Color( 0, 0, 0, 1 )
 background_energy = 1.0
@@ -98,4 +102,6 @@ adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
+=======
+>>>>>>> 272dbe5c1882f83960617a72ba31a033458722fc
 
