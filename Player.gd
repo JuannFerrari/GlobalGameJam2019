@@ -12,12 +12,9 @@ export var action_left="ui_left"
 export var action_shoot="ui_accept"
 export var ACCELERATION=50
 export var MAX_SPEED=300
-
 var bullet_scene = preload ("res://Bullet.tscn")
+signal healt_changed(health)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func shoot_bullet():
 	var bullet= bullet_scene.instance()
@@ -64,6 +61,7 @@ func _physics_process(delta):
 			else:	
 				if can_take_damage:
 					life-=1
+					emit_signal("healt_changed", life)
 					can_take_damage = false
 					$invul_timer.start(3)
 					modulate = Color(1,1,1,0.3)
