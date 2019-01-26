@@ -1,8 +1,0 @@
-[gd_scene format=2]
-
-[node name="PlayerOne" type="Position2D"]
-
-position = Vector2( 350, 350 )
-_sections_unfolded = [ "Transform" ]
-
-
