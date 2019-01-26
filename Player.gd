@@ -31,9 +31,6 @@ func _physics_process(delta):
 	if !dead:
 		if Input.is_action_just_pressed(action_shoot):
 			shoot_bullet()
-
-		if Input.is_action_just_pressed(action_shoot):
-			shoot_bullet()
 		
 		if Input.is_action_pressed(action_right):
 			motion.x= min(motion.x + ACCELERATION, MAX_SPEED)
@@ -41,6 +38,7 @@ func _physics_process(delta):
 			motion.x= max(motion.x - ACCELERATION, -MAX_SPEED)
 		else:
 			motion.x=lerp(motion.x,0,0.2)
+			
 		if Input.is_action_pressed(action_up):
 			motion.y=max(motion.y - ACCELERATION, -MAX_SPEED)
 		elif Input.is_action_pressed(action_down):
@@ -57,17 +55,8 @@ func _physics_process(delta):
 			if ($AnimationPlayer.current_animation != "Move"):
 				$AnimationPlayer.play("Move")
 	
-		var collide_info = move_and_collide(motion * delta)
-		if collide_info && collide_info.collider.name == 'EnemyOne':
-			if life-1 <= 0:
-				dead = true
-			else:	
-				if can_take_damage:
-					life-=1
-					can_take_damage = false
-					$invul_timer.start(3)
-					modulate = Color(1,1,1,0.3)
-					$CollisionShape2D.disabled = true
+		move_and_collide(motion * delta)
+		
 				
 	else:
 		$AnimationPlayer.play("idle")
@@ -76,6 +65,31 @@ func _physics_process(delta):
 
 func _on_invul_timer_timeout():
 	can_take_damage=true
-	modulate = Color(1,1,1,1)
+	if !dead:
+		modulate = Color(1,1,1,1)
 	$CollisionShape2D.disabled = false
 	
+
+
+func take_damage():
+	if can_take_damage:
+		life-=1
+		can_take_damage = false
+		$invul_timer.start(1.5)
+		modulate = Color(1,1,1,0.3)
+		$CollisionShape2D.disabled = true
+		
+	if life<=0:
+		dead = true
+		#is now ded blep
+		set_rotation_degrees(85)
+		
+	print("Took dmg, life is now: ", life)
+
+
+
+
+
+
+func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):
+	print(area.name)

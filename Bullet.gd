@@ -17,7 +17,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 
-
-func _on_Bullet_body_entered(body):
-	body.life-=1
+func _on_Bullet_area_entered(area):
+	area.life-=1
 	queue_free()
