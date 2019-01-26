@@ -1,6 +1,8 @@
 extends Area2D
 
 const VEL=1000
+const damage=1.5
+
 
 export var direction=0
 
@@ -8,6 +10,7 @@ export var direction=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$DespawnTimer.start(0.3)
 	set_process(true) # Replace with function body.
 
 func _process(delta):
@@ -21,6 +24,10 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_ShotgunBullet_area_entered(area):
-	print (area.name)
-	area.life-=1
+	if area.life>0:
+	  area.life-=damage
 	queue_free()# Replace with function body.
+
+
+func _on_DespawnTimer_timeout():
+	queue_free() # Replace with function body.

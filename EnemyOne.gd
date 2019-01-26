@@ -2,7 +2,7 @@ extends Area2D
 
 var speed = 100
 var direction = 0
-var life=1
+var life=20
 onready var playerOne = get_parent().get_node("Player1")
 onready var playerTwo = get_parent().get_node("Player2")
 onready var targets = [playerOne, playerTwo]
