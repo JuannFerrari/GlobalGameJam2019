@@ -100,7 +100,6 @@ scale = Vector2( 1.563, 5.625 )
 texture = ExtResource( 1 )
 
 [node name="Bed" type="StaticBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 584.563, 466.544 )
 __meta__ = {
 "_edit_group_": true

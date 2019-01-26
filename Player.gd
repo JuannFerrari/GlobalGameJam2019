@@ -42,6 +42,7 @@ func _physics_process(delta):
 		motion.y=lerp(motion.y,0,0.2)
 	
 	direction=motion.angle()
+<<<<<<< Updated upstream:Player.gd
 	move_and_collide(motion * delta)
 	if life <=0:
 		queue_free()
@@ -50,3 +51,16 @@ func _physics_process(delta):
 func _on_EnemyOne_body_entered(body):
 	body.life-=1
 	queue_free()
+=======
+	
+	if(motion < Vector2(1, 1) and motion > Vector2(-1, -1) ):
+		print("standing still")
+		if $AnimationPlayer.current_animation != "idle":
+			$AnimationPlayer.play("idle")
+	else:
+		if ($AnimationPlayer.current_animation != "Move"):
+			$AnimationPlayer.play("Move")
+		
+	
+	move_and_slide(motion)
+>>>>>>> Stashed changes:KinematicBody2D.gd
