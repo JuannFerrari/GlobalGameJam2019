@@ -22,7 +22,6 @@ extents = Vector2( 150, 60 )
 extents = Vector2( 20, 70 )
 
 [node name="Map" type="Node2D"]
-editor/display_folded = true
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
 editor/display_folded = true
