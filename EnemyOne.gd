@@ -11,7 +11,7 @@ func _ready():
 
 func _physics_process(delta):
 	direction = (target.position - position).normalized()
-	var collision_info = move_and_collide(direction*speed * delta) 
+	move_and_collide(direction*speed * delta) 
 	if life <=0:
 		queue_free()
 	#	if collision_info:   #only collides after move
