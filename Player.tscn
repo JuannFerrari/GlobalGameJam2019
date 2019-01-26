@@ -1,11 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-<<<<<<< HEAD
-=======
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/static/jerry.png" type="Texture" id=2]
 
->>>>>>> 80ad31106bdde0b2883fd17e85b730dcdd90c6ab
 [sub_resource type="RectangleShape2D" id=1]
 
 extents = Vector2( 32, 32 )
@@ -92,3 +89,7 @@ position = Vector2( 32.1427, 0 )
 anims/Move = SubResource( 2 )
 anims/idle = SubResource( 3 )
 
+[node name="invul_timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="invul_timer" to="." method="_on_invul_timer_timeout"]

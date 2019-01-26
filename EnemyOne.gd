@@ -8,7 +8,6 @@ onready var playerTwo = get_parent().get_node("Player2")
 onready var targets = [playerOne, playerTwo]
 var target
 var index
-var wr = weakref(self);
 
 func _ready():
 	index = randi()%2+0

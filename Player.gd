@@ -4,6 +4,7 @@ var motion=Vector2()
 var direction=0
 export var life = 5
 var dead = false
+var can_take_damage = true
 export var action_up="ui_up" 
 export var action_down="ui_down"
 export var action_right="ui_right"
@@ -50,7 +51,6 @@ func _physics_process(delta):
 		direction=motion.angle()
 	
 		if(motion < Vector2(1, 1) and motion > Vector2(-1, -1) ):
-			print("standing still")
 			if $AnimationPlayer.current_animation != "idle":
 				$AnimationPlayer.play("idle")
 		else:
@@ -59,10 +59,23 @@ func _physics_process(delta):
 	
 		var collide_info = move_and_collide(motion * delta)
 		if collide_info && collide_info.collider.name == 'EnemyOne':
-			if life <= 0:
+			if life-1 <= 0:
 				dead = true
 			else:	
-				life-=1
+				if can_take_damage:
+					life-=1
+					can_take_damage = false
+					$invul_timer.start(3)
+					modulate = Color(1,1,1,0.3)
+					$CollisionShape2D.disabled = true
+				
 	else:
+		$AnimationPlayer.play("idle")
 		$CollisionShape2D.disabled = true
 		
+
+func _on_invul_timer_timeout():
+	can_take_damage=true
+	modulate = Color(1,1,1,1)
+	$CollisionShape2D.disabled = false
+	
