@@ -1,7 +1,7 @@
 extends Area2D
 
 
-const VEL=300
+const VEL=500
 export var direction = 0
 
 
