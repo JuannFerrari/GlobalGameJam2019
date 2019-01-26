@@ -8,6 +8,7 @@ export var action_left=""
 export var ACCELERATION=50
 export var MAX_SPEED=300
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
