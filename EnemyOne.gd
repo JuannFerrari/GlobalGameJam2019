@@ -3,7 +3,7 @@ extends KinematicBody2D
 var speed = 100
 var direction = 0
 var life=1
-onready var target = get_parent().get_node("Player")
+onready var target = get_parent().get_node("Player1")
 var wr = weakref(self);
 
 func _ready():
