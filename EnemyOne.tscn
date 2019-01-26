@@ -1,14 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://EnemyOne.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/static/ghost.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
 radius = 1.0
 
-[node name="EnemyOne" type="KinematicBody2D"]
-position = Vector2( 350, 350 )
+[node name="EnemyOne" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )
@@ -19,6 +18,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="icon" type="Sprite" parent="."]
-position = Vector2( -1.6465, 0.0571823 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
 
+[connection signal="body_entered" from="." to="." method="_on_EnemyOne_body_entered"]

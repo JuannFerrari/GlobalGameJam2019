@@ -17,6 +17,7 @@ __meta__ = {
 [node name="icon" type="Sprite" parent="."]
 rotation = 1.5708
 scale = Vector2( 0.332925, 0.66585 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,5 +28,5 @@ shape = SubResource( 1 )
 position = Vector2( -0.270172, 0 )
 scale = Vector2( 1.94563, 1 )
 
-[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
