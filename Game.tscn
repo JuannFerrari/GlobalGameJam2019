@@ -9,9 +9,14 @@
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 298.5, 174 )
+action_shoot = "ui_accept2"
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 430.559, 234.665 )
+action_up = "ui_up2"
+action_down = "ui_down2"
+action_right = "ui_right2"
+action_left = "ui_left2"
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 
