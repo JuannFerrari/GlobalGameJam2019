@@ -19,14 +19,12 @@ func _ready():
 func shoot_bullet():
 	var bullet= bullet_scene.instance()
 	get_parent().add_child(bullet)
-	print(direction)
 	bullet.set_rotation(direction)
 	bullet.direction=direction
 	bullet.set_global_position(get_global_position())
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed(action_shoot):
-		print("shot")
 		shoot_bullet()
 	
 	if Input.is_action_pressed(action_right):
