@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 var motion=Vector2()
 var direction=0
-export var life = 5
 export var action_up="ui_up" 
 export var action_down="ui_down"
 export var action_right="ui_right"
@@ -42,21 +41,14 @@ func _physics_process(delta):
 		motion.y=lerp(motion.y,0,0.2)
 	
 	direction=motion.angle()
-
+	
 	if(motion < Vector2(1, 1) and motion > Vector2(-1, -1) ):
-		print("standing still")
+
 		if $AnimationPlayer.current_animation != "idle":
 			$AnimationPlayer.play("idle")
 	else:
 		if ($AnimationPlayer.current_animation != "Move"):
 			$AnimationPlayer.play("Move")
-
-	move_and_collide(motion * delta)
-	if life <=0:
-		queue_free()
 		
-		
-func _on_EnemyOne_body_entered(body):
-	body.life-=1
-	queue_free()
-
+	
+	move_and_slide(motion)
