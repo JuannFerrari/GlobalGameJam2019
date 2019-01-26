@@ -5,7 +5,8 @@
 
 [sub_resource type="CircleShape2D" id=1]
 
-radius = 1.0
+custom_solver_bias = 1.0
+radius = 64.0
 
 [node name="EnemyOne" type="Area2D"]
 collision_layer = 4

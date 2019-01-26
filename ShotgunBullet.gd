@@ -1,6 +1,6 @@
 extends Area2D
 
-const VEL=800
+const VEL=1000
 
 export var direction=0
 
@@ -20,6 +20,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 
-func _on_ShotgunBullet_body_entered(body):
-	body.life-=1
-	queue_free()
+func _on_ShotgunBullet_area_entered(area):
+	print (area.name)
+	area.life-=1
+	queue_free()# Replace with function body.

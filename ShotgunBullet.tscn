@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 
-[node name="Area2D" type="Area2D"]
+[node name="ShotgunBullet" type="Area2D"]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 1 )
@@ -24,4 +24,4 @@ shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
-[connection signal="body_entered" from="." to="." method="_on_ShotgunBullet_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_ShotgunBullet_area_entered"]
