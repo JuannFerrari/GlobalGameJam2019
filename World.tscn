@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://EnemyOne.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 312.929, 172.309 )
+
+[node name="EnemyOne" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 350, 350 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyOne"]
+shape = SubResource( 1 )
+
+[node name="icon" type="Sprite" parent="EnemyOne"]
+position = Vector2( -1.6465, 0.0571823 )
+texture = ExtResource( 3 )
+
