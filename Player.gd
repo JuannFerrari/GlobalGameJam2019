@@ -3,6 +3,7 @@ extends KinematicBody2D
 var motion=Vector2()
 var direction=0
 export var life = 5
+var dead = false
 export var action_up="ui_up" 
 export var action_down="ui_down"
 export var action_right="ui_right"
@@ -25,28 +26,30 @@ func shoot_bullet():
 	bullet.set_global_position(get_global_position())
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed(action_shoot):
-		shoot_bullet()
-	
-	if Input.is_action_pressed(action_right):
-		motion.x= min(motion.x + ACCELERATION, MAX_SPEED)
-	elif Input.is_action_pressed(action_left):
-		motion.x= max(motion.x - ACCELERATION, -MAX_SPEED)
-	else:
-		motion.x=lerp(motion.x,0,0.2)
-	if Input.is_action_pressed(action_up):
-		motion.y=max(motion.y - ACCELERATION, -MAX_SPEED)
-	elif Input.is_action_pressed(action_down):
-		motion.y=min(motion.y + ACCELERATION, MAX_SPEED)
-	else:
-		motion.y=lerp(motion.y,0,0.2)
-	
-	direction=motion.angle()
-	move_and_collide(motion * delta)
-	if life <=0:
-		queue_free()
+	if !dead:
+		if Input.is_action_just_pressed(action_shoot):
+			shoot_bullet()
 		
+		if Input.is_action_pressed(action_right):
+			motion.x= min(motion.x + ACCELERATION, MAX_SPEED)
+		elif Input.is_action_pressed(action_left):
+			motion.x= max(motion.x - ACCELERATION, -MAX_SPEED)
+		else:
+			motion.x=lerp(motion.x,0,0.2)
+		if Input.is_action_pressed(action_up):
+			motion.y=max(motion.y - ACCELERATION, -MAX_SPEED)
+		elif Input.is_action_pressed(action_down):
+			motion.y=min(motion.y + ACCELERATION, MAX_SPEED)
+		else:
+			motion.y=lerp(motion.y,0,0.2)
 		
-func _on_EnemyOne_body_entered(body):
-	body.life-=1
-	queue_free()
+		direction=motion.angle()
+		var collide_info = move_and_collide(motion * delta)
+		if collide_info && collide_info.collider.name == 'EnemyOne':
+			if life <= 0:
+				dead = true
+			else:	
+				life-=1
+	else:
+		$CollisionShape2D.disabled = true
+		
