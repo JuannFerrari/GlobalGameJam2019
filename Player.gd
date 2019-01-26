@@ -26,7 +26,11 @@ func shoot_bullet():
 	bullet.set_global_position(get_global_position())
 
 func _physics_process(delta):
+
 	if !dead:
+		if Input.is_action_just_pressed(action_shoot):
+			shoot_bullet()
+
 		if Input.is_action_just_pressed(action_shoot):
 			shoot_bullet()
 		
@@ -44,6 +48,15 @@ func _physics_process(delta):
 			motion.y=lerp(motion.y,0,0.2)
 		
 		direction=motion.angle()
+	
+		if(motion < Vector2(1, 1) and motion > Vector2(-1, -1) ):
+			print("standing still")
+			if $AnimationPlayer.current_animation != "idle":
+				$AnimationPlayer.play("idle")
+		else:
+			if ($AnimationPlayer.current_animation != "Move"):
+				$AnimationPlayer.play("Move")
+	
 		var collide_info = move_and_collide(motion * delta)
 		if collide_info && collide_info.collider.name == 'EnemyOne':
 			if life <= 0:
