@@ -21,6 +21,11 @@ func _physics_process(delta):
 		else:
 			target = targets[0]
 	direction = (target.position - position).normalized()
+	if (target.position - position).x > 0:
+		$icon.flip_h = true
+	else:
+		$icon.flip_h = false
+		
 	move_and_collide(direction * speed * delta) 
 	if life <=0:
 		queue_free()
