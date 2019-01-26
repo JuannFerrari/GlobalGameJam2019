@@ -11,10 +11,6 @@ extents = Vector2( 32, 32 )
 "Player",
 ]]
 script = ExtResource( 1 )
-action_up = "ui_up"
-action_down = "ui_down"
-action_right = "ui_right"
-action_left = "ui_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -24,4 +20,7 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 32.1427, 0 )
 
