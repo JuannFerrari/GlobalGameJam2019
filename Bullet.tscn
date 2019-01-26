@@ -7,8 +7,8 @@
 
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 2048
-collision_mask = 2048
+collision_layer = 2
+collision_mask = 4
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -24,6 +24,8 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -0.270172, 0 )
+scale = Vector2( 1.94563, 1 )
 
-[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
