@@ -13,7 +13,7 @@ export var action_shoot="ui_accept"
 export var ACCELERATION=50
 export var MAX_SPEED=300
 var bullet_scene = preload ("res://Bullet.tscn")
-signal healt_changed(health)
+signal health_changed(health)
 
 
 func shoot_bullet():
@@ -71,6 +71,7 @@ func _on_invul_timer_timeout():
 func take_damage():
 	if can_take_damage:
 		life-=1
+		emit_signal("health_changed",life)
 		can_take_damage = false
 		$invul_timer.start(1.5)
 		modulate = Color(1,1,1,0.3)
@@ -81,12 +82,5 @@ func take_damage():
 		#is now ded blep
 		set_rotation_degrees(85)
 
-	print("Took dmg, life is now: ", life)
-
-
-
-
-
-
 func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):
-	print(area.name)
+	pass

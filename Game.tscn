@@ -19,5 +19,5 @@ position = Vector2( 430.559, 234.665 )
 
 [node name="Spawner" parent="." instance=ExtResource( 4 )]
 
-[connection signal="healt_changed" from="Player1" to="Interface" method="_on_Player_healt_changed"]
+[connection signal="health_changed" from="Player1" to="Interface" method="_on_Player1_health_changed"]
 [connection signal="hide" from="Player1" to="Interface" method="_on_Player_hide"]
