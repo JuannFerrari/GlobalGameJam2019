@@ -34,7 +34,7 @@ position = Vector2( 512, 584 )
 
 [node name="wardrobe" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 584.563, 466.544 )
+position = Vector2( 843.826, 492.169 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -68,20 +68,32 @@ position = Vector2( 370.758, 271.559 )
 scale = Vector2( 0.915578, 0.92921 )
 z_index = -998
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Windows" type="Sprite" parent="."]
 position = Vector2( 716.442, 27.7427 )
 scale = Vector2( 0.61358, 0.533436 )
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Windows2" type="Sprite" parent="."]
 position = Vector2( 312.443, 27.7427 )
 scale = Vector2( 0.61358, 0.533436 )
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="floorboard" type="Sprite" parent="."]
 position = Vector2( 515.063, 291 )
 scale = Vector2( 0.986724, 0.986724 )
 z_index = -999
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
