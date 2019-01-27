@@ -50,3 +50,7 @@ func _on_EnemyOne_body_entered(body):
 		if body.can_take_damage:
 			body.take_damage()
 			queue_free()
+			
+func take_damage(damage):
+	life -=damage
+	$AnimationPlayer.play("hit")

@@ -10,19 +10,14 @@
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 298.5, 174 )
-action_up = "ui_up2"
-action_down = "ui_down2"
-action_right = "ui_right2"
-action_left = "ui_left2"
-action_shoot = "ui_accept2"
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 430.559, 234.665 )
+script = ExtResource( 2 )
 action_up = "ui_up2"
 action_down = "ui_down2"
 action_right = "ui_right2"
 action_left = "ui_left2"
-script = ExtResource( 2 )
 action_shoot = "ui_accept2"
 
 [node name="Map" parent="." instance=ExtResource( 3 )]
@@ -33,3 +28,4 @@ action_shoot = "ui_accept2"
 
 [connection signal="health_changed" from="Player1" to="Interface" method="_on_Player1_health_changed"]
 [connection signal="hide" from="Player1" to="Interface" method="_on_Player_hide"]
+[connection signal="health_changed" from="Player2" to="Interface" method="_on_Player2_health_changed"]
