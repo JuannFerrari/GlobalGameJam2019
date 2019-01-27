@@ -22,7 +22,7 @@ tracks/0/keys = {
 }
 
 [node name="Spawner" type="Position2D"]
-position = Vector2( -29.5133, 670.248 )
+position = Vector2( 1103.78, 185.882 )
 script = ExtResource( 1 )
 spawnScene = ExtResource( 2 )
 timerPath = NodePath("Timer")

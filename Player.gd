@@ -13,7 +13,7 @@ export var action_left="ui_left"
 export var action_shoot="ui_accept"
 export var ACCELERATION=50
 export var MAX_SPEED=300
-const FIRE_RATE=0.5
+const FIRE_RATE=0.4
 var can_shoot=true
 var bullet_scene = preload ("res://Bullet.tscn")
 signal health_changed(health)
@@ -22,6 +22,7 @@ signal health_changed(health)
 func shoot_bullet():
 	if can_shoot:
 		can_shoot=false
+		Input.start_joy_vibration(0, 0.2, 0.2, 0.3)
 		$fire_rate.start(FIRE_RATE)
 		var bullet= bullet_scene.instance()
 		get_parent().add_child(bullet)
@@ -90,6 +91,7 @@ func take_damage():
 	if can_take_damage:
 		life-=1
 		emit_signal("health_changed",life)
+		Input.start_joy_vibration(0, 0, 0.3, 0.3)
 		can_take_damage = false
 		$invul_timer.start(1.5)
 		modulate = Color(1,1,1,0.3)

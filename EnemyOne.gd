@@ -48,10 +48,12 @@ func _physics_process(delta):
 
 
 func die():
+	if life <= 0:
+		emit_signal("self_killed")
 	life = 0
 	$AnimationPlayer.play("ded")
 	notified_death = true
-	emit_signal("self_killed")
+
 
 func take_damage(damage):
 	life -=damage

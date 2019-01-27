@@ -1,7 +1,7 @@
 extends Area2D
 
 
-const VEL=500
+const VEL=600
 export var direction = 0
 const damage=20
 signal fired

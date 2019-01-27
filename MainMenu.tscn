@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Play.gd" type="Script" id=1]
+[ext_resource path="res://assets/main_menu/jugar.png" type="Texture" id=2]
+[ext_resource path="res://assets/main_menu/createdby.png" type="Texture" id=3]
+[ext_resource path="res://assets/main_menu/spookylogo.png" type="Texture" id=4]
+[ext_resource path="res://assets/main_menu/logo.png" type="Texture" id=5]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Play" type="TextureButton" parent="."]
+margin_left = 89.0
+margin_top = 289.0
+margin_right = 365.0
+margin_bottom = 453.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Play"]
+position = Vector2( 124.934, 92.9479 )
+scale = Vector2( 0.579919, 0.647815 )
+texture = ExtResource( 2 )
+
+[node name="Credits" type="Sprite" parent="."]
+position = Vector2( 333.525, 529.955 )
+scale = Vector2( 0.63813, 0.618965 )
+texture = ExtResource( 3 )
+
+[node name="logo" type="Sprite" parent="."]
+position = Vector2( 428.067, 173.349 )
+texture = ExtResource( 4 )
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 587.265, 222.878 )
+texture = ExtResource( 5 )
+
+[connection signal="pressed" from="Play" to="Play" method="_on_Play_pressed"]

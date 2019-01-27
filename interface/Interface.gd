@@ -35,7 +35,7 @@ func _ready():
 	marbles_player.stream = sound_marbles
 	game_over_player.stream = sound_game_over
 	main_player.stream = main_music
-	
+	set_as_toplevel(true)
 	main_player.play()
 
 func _on_Player1_health_changed(health):

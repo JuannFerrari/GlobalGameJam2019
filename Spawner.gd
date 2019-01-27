@@ -24,7 +24,13 @@ func _on_Timer_timeout():
 		get_parent().add_child(spawnInstance)
 		spawnInstance.position = position
 	
-		timerNode.set_wait_time(rand_range(minWaitTime, maxWaitTime))
+		#timerNode.set_wait_time(rand_range(minWaitTime, maxWaitTime))
+		var score = get_parent().get_node("Interface").get_node("KillsCounter").get_node("Number").text
+		var time_between_respawns = (30-int(score))*0.1
+		if time_between_respawns < 1:
+			time_between_respawns = 0.75
+		timerNode.set_wait_time(time_between_respawns)
+		
 		timerNode.start()
 	else:
 		emit_signal('game_over')
