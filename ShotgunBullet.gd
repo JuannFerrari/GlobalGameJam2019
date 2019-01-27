@@ -1,7 +1,7 @@
 extends Area2D
 
 const VEL=1000
-const damage=3
+const damage=4
 
 
 export var direction=0

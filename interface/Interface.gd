@@ -24,6 +24,7 @@ var main_music = preload("res://sounds/main_music.ogg")
 var sound_pillow = preload("res://sounds/sound_pillow.ogg")
 var sound_marbles = preload("res://sounds/sound_marbles.ogg")
 var sound_game_over = preload("res://sounds/sound_game_over.ogg")
+var sound_player_death = preload("res://sounds/oof.wav")
 
 var game_over = false
 
@@ -34,6 +35,7 @@ func _ready():
 	marbles_player.stream = sound_marbles
 	game_over_player.stream = sound_game_over
 	main_player.stream = main_music
+	
 	main_player.play()
 
 func _on_Player1_health_changed(health):

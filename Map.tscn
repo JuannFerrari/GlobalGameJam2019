@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://HWall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Bed.tscn" type="PackedScene" id=2]
@@ -9,13 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-extents = Vector2( 90, 130 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
 extents = Vector2( 150, 60 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 extents = Vector2( 20, 70 )
 
@@ -36,10 +32,8 @@ position = Vector2( 512, 584 )
 
 [node name="Bed" parent="." instance=ExtResource( 2 )]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bed"]
-shape = SubResource( 1 )
-
 [node name="wardrobe" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 584.563, 466.544 )
 __meta__ = {
 "_edit_group_": true
@@ -47,7 +41,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wardrobe"]
 position = Vector2( 1, 1 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="icon" type="Sprite" parent="wardrobe"]
 scale = Vector2( 4.688, 1.875 )
@@ -61,7 +55,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Toys"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="icon" type="Sprite" parent="Toys"]
 modulate = Color( 0, 0, 0, 1 )
