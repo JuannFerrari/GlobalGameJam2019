@@ -18,6 +18,7 @@ margin_left = -120.0
 margin_bottom = 50.0
 
 [node name="KillsCounter" parent="." instance=ExtResource( 4 )]
+texture = null
 
 [node name="LifeCounterP2" parent="." instance=ExtResource( 5 )]
 anchor_left = 0.0
@@ -34,13 +35,28 @@ margin_top = -174.579
 margin_right = 193.5
 margin_bottom = -18.5788
 
-[node name="DeathPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathPlayer" type="AudioStreamPlayer" parent="."]
+editor/display_folded = true
 
 [node name="DeathTimer" type="Timer" parent="DeathPlayer"]
 
-[node name="SpawnPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PillowPlayer" type="AudioStreamPlayer" parent="."]
+editor/display_folded = true
+
+[node name="PillowTimer" type="Timer" parent="PillowPlayer"]
+
+[node name="MarblesPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MarblesTimer" type="Timer" parent="MarblesPlayer"]
+
+[node name="MainPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SpawnPlayer" type="AudioStreamPlayer" parent="."]
+editor/display_folded = true
 
 [node name="SpawnTimer" type="Timer" parent="SpawnPlayer"]
 
 [connection signal="timeout" from="DeathPlayer/DeathTimer" to="." method="_on_DeathTimer_timeout"]
+[connection signal="timeout" from="PillowPlayer/PillowTimer" to="." method="_on_PillowPlayer_timeout"]
+[connection signal="timeout" from="MarblesPlayer/MarblesTimer" to="." method="_on_MarblesTimer_timeout"]
 [connection signal="timeout" from="SpawnPlayer/SpawnTimer" to="." method="_on_DeathTimer_timeout"]

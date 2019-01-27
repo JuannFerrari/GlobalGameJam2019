@@ -5,11 +5,13 @@ const damage=3
 
 
 export var direction=0
-
+signal fired
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.connect("fired", get_parent().get_node('Interface'), "_on_Shotgun_fired")
+	emit_signal("fired")
 	$DespawnTimer.start(0.3)
 	set_process(true) # Replace with function body.
 

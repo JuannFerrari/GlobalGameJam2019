@@ -42,6 +42,7 @@ func _physics_process(delta):
 	var over_lapping_bodies= get_overlapping_bodies()
 	if over_lapping_bodies.size() >0:
 		over_lapping_bodies[0].take_damage()
+		emit_signal("self_killed")
 		queue_free()
 
 	if life <=0:

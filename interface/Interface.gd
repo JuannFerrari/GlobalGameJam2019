@@ -8,16 +8,32 @@ onready var death_player = get_node("DeathPlayer")
 onready var death_timer = death_player.get_node("DeathTimer")
 onready var spawn_player = get_node("SpawnPlayer")
 onready var spawn_timer = spawn_player.get_node("SpawnTimer")
+onready var main_player = get_node("MainPlayer")
+onready var pillow_player = get_node("PillowPlayer")
+onready var pillow_timer = pillow_player.get_node("PillowTimer")
+
+onready var marbles_player = get_node("MarblesPlayer")
+onready var marbles_timer = marbles_player.get_node("MarblesTimer")
 
 
 var sound_spawn = preload("res://sounds/sound_ghost.ogg")
 var sound_death = preload("res://sounds/sound_ghost_death.ogg")
+var main_music = preload("res://sounds/main_music.ogg")
+var sound_pillow = preload("res://sounds/sound_pillow.ogg")
+var sound_marbles = preload("res://sounds/sound_marbles.ogg")
+
+
+
 
 var game_over = false
 
 func _ready():
 	death_player.stream = sound_death
 	spawn_player.stream = sound_spawn
+	pillow_player.stream = sound_pillow
+	marbles_player.stream = sound_marbles
+	main_player.stream = main_music
+	main_player.play()
 
 func _on_Player1_health_changed(health):
 	update_health_p1(health)
@@ -39,6 +55,7 @@ func _on_EnemyOne_self_killed():
 func _on_Spawner_game_over():
 	game_over_label.show()
 	game_over = true
+	spawn_player.stop()
 
 func _input(event):
 	if event is InputEventKey && game_over == true:
@@ -57,3 +74,18 @@ func _on_SpawnTimer_timeout():
 
 func _on_DeathTimer_timeout():
 	death_player.stop()
+
+func _on_Bullet_fired():
+	pillow_player.play()
+	pillow_timer.start(0.5)
+
+func _on_Shotgun_fired():
+	marbles_player.play()
+	marbles_timer.start(0.5)
+	
+func _on_PillowPlayer_timeout():
+	pillow_player.stop()
+
+
+func _on_MarblesTimer_timeout():
+	marbles_player.stop()
