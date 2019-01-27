@@ -14,25 +14,27 @@ export var ACCELERATION=50
 export var MAX_SPEED=300
 export var shot_spread=0.1
 export var shot_count=5
+const FIRE_RATE=0.5
+var can_shoot=true
 var bullet_scene = preload ("res://ShotgunBullet.tscn")
 signal health_changed(health)
 
 
 func shoot_bullet():
-	for i in range (shot_count):
-	  var bullet= bullet_scene.instance()
-	  get_parent().add_child(bullet)
-	  bullet.direction=direction-(i-2)*shot_spread
-	  bullet.set_rotation(bullet.direction)
-	  bullet.set_global_position(get_global_position())
+	if can_shoot:
+		can_shoot=false
+		$fire_rate.start(FIRE_RATE)
+		for i in range (shot_count):
+		  var bullet= bullet_scene.instance()
+		  get_parent().add_child(bullet)
+		  bullet.direction=direction-(i-2)*shot_spread
+		  bullet.set_rotation(bullet.direction)
+		  bullet.set_global_position(get_global_position())
 
 
 func _physics_process(delta):
 
 	if !dead:
-		if Input.is_action_just_pressed(action_shoot):
-			$AnimatedSprite.play("attack")
-			shoot_bullet()
 
 		if Input.is_action_pressed(action_right):
 			motion.x= min(motion.x + ACCELERATION, MAX_SPEED)
@@ -59,6 +61,10 @@ func _physics_process(delta):
 			$AnimatedSprite.flip_h=true
 		else:
 			$AnimatedSprite.flip_h=false
+		
+		if Input.is_action_pressed(action_shoot):
+			$AnimatedSprite.play("attack")
+			shoot_bullet()
 		move_and_collide(motion * delta)
 
 
@@ -91,3 +97,10 @@ func take_damage():
 
 func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):
 	pass
+	
+	
+	
+	
+
+func _on_fire_rate_timeout():
+	can_shoot=true

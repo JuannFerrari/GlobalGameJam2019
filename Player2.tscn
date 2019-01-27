@@ -25,7 +25,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Player2" instance=ExtResource( 1 )]
+[node name="Player2" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="icon" parent="." index="0"]
@@ -37,3 +37,6 @@ scale = Vector2( 0.433334, 0.433334 )
 frames = SubResource( 1 )
 animation = "walk"
 
+[node name="fire_rate" type="Timer" parent="." index="7"]
+
+[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
