@@ -27,6 +27,16 @@ animations = [ {
 
 [node name="Player2" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+life = null
+action_up = null
+action_down = null
+action_right = null
+action_left = null
+action_shoot = null
+ACCELERATION = null
+MAX_SPEED = null
+shot_spread = null
+shot_count = null
 
 [node name="AnimatedSprite" parent="." index="5"]
 position = Vector2( 12.7341, -22.0129 )

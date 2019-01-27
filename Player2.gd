@@ -51,14 +51,10 @@ func _physics_process(delta):
 			motion.y=lerp(motion.y,0,0.2)
 
 		direction=motion.angle()
-		
-		if (motion.x<5 and motion.x >-5) and (motion.y<5 and motion.y >-5):
-			$AnimatedSprite.play("idle")
-		else:
-			$AnimatedSprite.play("walk")
-		
-		if motion.x >0:
-			$AnimatedSprite.flip_h=true
+
+		if(motion < Vector2(1, 1) and motion > Vector2(-1, -1) ):
+			if $AnimationPlayer.current_animation != "idle":
+				$AnimationPlayer.play("idle")
 		else:
 			$AnimatedSprite.flip_h=false
 		
@@ -69,6 +65,7 @@ func _physics_process(delta):
 
 
 	else:
+		$AnimationPlayer.play("idle")
 		$CollisionShape2D.disabled = true
 
 
@@ -92,7 +89,6 @@ func take_damage():
 	if life<=0:
 		dead = true
 		#is now ded blep
-		$AnimatedSprite.play("idle")
 		set_rotation_degrees(85)
 
 func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):

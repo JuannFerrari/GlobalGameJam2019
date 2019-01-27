@@ -45,8 +45,11 @@ func _physics_process(delta):
 
 
 func _on_EnemyOne_body_entered(body):
-	print(body.name)
 	if body.name == "Player1" or body.name == "Player2":
 		if body.can_take_damage:
 			body.take_damage()
 			queue_free()
+			
+func take_damage(damage):
+	life -=damage
+	$AnimationPlayer.play("hit")

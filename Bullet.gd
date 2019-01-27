@@ -17,5 +17,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Bullet_area_entered(area):
 	if area.life>0:
-	  area.life-=damage
+	  area.take_damage(damage)
 	queue_free()
