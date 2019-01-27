@@ -13,6 +13,13 @@ signal self_killed
 func _ready():
 	index = randi()%2+0
 	target = targets[index]
+	if target.dead or ! target.can_take_damage:
+		if index == 0 and (!targets[1].dead or targets[1].can_take_damage):
+			target = targets[1]
+		elif index == 1 and (!targets[0].dead or targets[0].can_take_damage):
+			target = targets[0]
+		else:
+			pass
 	self.connect("self_killed", get_parent().get_node('Interface'), "_on_EnemyOne_self_killed")
 	pass
 
@@ -23,10 +30,12 @@ func _physics_process(delta):
 
 
 	if target.dead or ! target.can_take_damage:
-		if index == 0:
+		if index == 0 and (!targets[1].dead or targets[1].can_take_damage):
 			target = targets[1]
-		else:
+		elif index == 1 and (!targets[0].dead or targets[0].can_take_damage):
 			target = targets[0]
+		else:
+			pass
 	direction = (target.position - position).normalized()
 
 	if (target.position - position).x > 0:
@@ -36,10 +45,6 @@ func _physics_process(delta):
 
 	position = position + (direction * speed * delta)
 	
-	var over_lapping_bodies= get_overlapping_bodies()
-	if over_lapping_bodies.size() >0:
-		over_lapping_bodies[0].take_damage()
-		queue_free()
 	
 	if life <=0:
 		emit_signal("self_killed")
@@ -49,3 +54,7 @@ func _physics_process(delta):
 func take_damage(damage):
 	life -=damage
 	$AnimationPlayer.play("hit")
+
+func _on_EnemyOne_body_entered(body):
+	body.take_damage()
+	queue_free()

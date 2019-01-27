@@ -42,3 +42,4 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hit = SubResource( 2 )
 
+[connection signal="body_entered" from="." to="." method="_on_EnemyOne_body_entered"]
