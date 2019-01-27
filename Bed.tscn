@@ -4,20 +4,22 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-extents = Vector2( 90.642, 273.685 )
+extents = Vector2( 100, 230 )
 
 [node name="Bed" type="StaticBody2D"]
-position = Vector2( 119.252, 257.054 )
+position = Vector2( 58.9582, 355.031 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3, 4 )
+position = Vector2( 43.524, -93.86 )
+scale = Vector2( 0.878, 0.878 )
 shape = SubResource( 1 )
 
 [node name="icon" type="Sprite" parent="."]
 modulate = Color( 0.976471, 0.752941, 0.956863, 1 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 43.5238, -93.86 )
+scale = Vector2( 0.878468, 0.878468 )
 texture = ExtResource( 1 )
 

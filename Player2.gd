@@ -93,6 +93,7 @@ func take_damage():
 
 	if life<=0:
 		dead = true
+		can_take_damage=false
 		modulate= Color(1,1,1,1)
 		$AnimatedSprite.flip_h=false
 		#is now ded blep
