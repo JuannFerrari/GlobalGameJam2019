@@ -64,7 +64,7 @@ func _physics_process(delta):
 			
 		move_and_collide(motion * delta)
 	else:
-		$AnimatedSprite.play("idle")
+		$AnimatedSprite.play("dead")
 		$CollisionShape2D.disabled = true
 
 
@@ -87,8 +87,9 @@ func take_damage():
 
 	if life<=0:
 		dead = true
+		modulate= Color(1,1,1,1)
+		$AnimatedSprite.flip_h=false
 		#is now ded blep
-		set_rotation_degrees(85)
 
 func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):
 	pass
