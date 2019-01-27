@@ -44,21 +44,24 @@ func _physics_process(delta):
 		position = position + (direction * speed * delta)
 	else:
 		if !notified_death:
-			emit_signal("self_killed")
-			notified_death = true
 			die()
 
 
 func die():
+	life = 0
 	$AnimationPlayer.play("ded")
+	notified_death = true
+	emit_signal("self_killed")
 
 func take_damage(damage):
 	life -=damage
 	$AnimationPlayer.play("hit")
+	$Hitsound.play()
 
 func _on_EnemyOne_body_entered(body):
-	body.take_damage()
-	die()
+	if (life>0):
+		body.take_damage()
+		die()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
