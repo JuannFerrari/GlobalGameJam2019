@@ -10,6 +10,8 @@ export (float) var minWaitTime
 export (float) var maxWaitTime
 onready var playerOne = get_parent().get_node("Player1")
 onready var playerTwo = get_parent().get_node("Player2")
+signal game_over
+
 func _ready():
 	randomize()
 	timerNode.set_wait_time(rand_range(minWaitTime, maxWaitTime))
@@ -24,3 +26,6 @@ func _on_Timer_timeout():
 	
 		timerNode.set_wait_time(rand_range(minWaitTime, maxWaitTime))
 		timerNode.start()
+	else:
+		emit_signal('game_over')
+		

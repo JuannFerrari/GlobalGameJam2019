@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://interface/themes/default_theme.tres" type="Theme" id=1]
+
+[node name="GameOver" type="NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="TextOver" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.0
+margin_top = -23.5
+margin_right = 74.0
+margin_bottom = 23.5
+theme = ExtResource( 1 )
+text = "GAME OVER"
+
+[node name="TextRestart" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -196.5
+margin_top = 10.0
+margin_right = 196.5
+theme = ExtResource( 1 )
+text = "PRESS ANY KEY FOR RESTART"
+
