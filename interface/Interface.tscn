@@ -34,3 +34,13 @@ margin_top = -174.579
 margin_right = 193.5
 margin_bottom = -18.5788
 
+[node name="DeathPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="DeathTimer" type="Timer" parent="DeathPlayer"]
+
+[node name="SpawnPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="SpawnPlayer"]
+
+[connection signal="timeout" from="DeathPlayer/DeathTimer" to="." method="_on_DeathTimer_timeout"]
+[connection signal="timeout" from="SpawnPlayer/SpawnTimer" to="." method="_on_DeathTimer_timeout"]

@@ -9,18 +9,20 @@ onready var targets = [playerOne, playerTwo]
 var target
 var index
 signal self_killed
+signal spawned
 
 func _ready():
 	index = randi()%2+0
 	target = targets[index]
 	self.connect("self_killed", get_parent().get_node('Interface'), "_on_EnemyOne_self_killed")
-	pass
+	self.connect("spawned", get_parent().get_node('Interface'), "_on_EnemyOne_spawned")
+	emit_signal("spawned")
 
 func _physics_process(delta):
+	
 
 	if targets[0].dead and targets[1].dead:
 		queue_free()
-
 
 	if target.dead:
 		if index == 0:
@@ -47,6 +49,7 @@ func _physics_process(delta):
 func _on_EnemyOne_body_entered(body):
 	if body.name == "Player1" or body.name == "Player2":
 		if body.can_take_damage:
+			emit_signal("self_killed")
 			body.take_damage()
 			queue_free()
 			
