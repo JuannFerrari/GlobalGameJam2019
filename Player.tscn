@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/frames/tom/tomidle.png" type="Texture" id=2]
-[ext_resource path="res://assets/frames/tom/tomwalk.png" type="Texture" id=3]
+[ext_resource path="res://assets/frames/rip.png" type="Texture" id=3]
 [ext_resource path="res://assets/frames/tom/tomattack.png" type="Texture" id=4]
+[ext_resource path="res://assets/frames/tom/tomwalk.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -49,14 +50,19 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "walk",
+"name": "dead",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
 "speed": 5.0
 } ]
 
@@ -87,7 +93,7 @@ shape = SubResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -7.73766, -9.39211 )
-scale = Vector2( 0.323659, 0.323659 )
+scale = Vector2( 0.433, 0.433 )
 frames = SubResource( 6 )
 animation = "idle"
 

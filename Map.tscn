@@ -6,11 +6,11 @@
 [ext_resource path="res://assets/static/floormat.png" type="Texture" id=4]
 [ext_resource path="res://assets/static/floorboard.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 
 extents = Vector2( 150, 60 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 
 extents = Vector2( 20, 70 )
 
@@ -39,7 +39,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wardrobe"]
 position = Vector2( 1, 1 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="icon" type="Sprite" parent="wardrobe"]
 scale = Vector2( 4.688, 1.875 )
@@ -53,7 +53,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Toys"]
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="icon" type="Sprite" parent="Toys"]
 modulate = Color( 0, 0, 0, 1 )

@@ -22,7 +22,7 @@ func _physics_process(delta):
 		queue_free()
 
 
-	if target.dead:
+	if target.dead or ! target.can_take_damage:
 		if index == 0:
 			target = targets[1]
 		else:
@@ -34,22 +34,18 @@ func _physics_process(delta):
 	else:
 		$icon.flip_h = false
 
-
 	position = position + (direction * speed * delta)
-
+	
+	var over_lapping_bodies= get_overlapping_bodies()
+	if over_lapping_bodies.size() >0:
+		over_lapping_bodies[0].take_damage()
+		queue_free()
+	
 	if life <=0:
 		emit_signal("self_killed")
 		queue_free()
+	
 
-
-
-
-func _on_EnemyOne_body_entered(body):
-	if body.name == "Player1" or body.name == "Player2":
-		if body.can_take_damage:
-			body.take_damage()
-			queue_free()
-			
 func take_damage(damage):
 	life -=damage
 	$AnimationPlayer.play("hit")

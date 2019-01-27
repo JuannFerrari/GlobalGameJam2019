@@ -1,22 +1,22 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Bullet.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/frames/tom/pillow.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
+radius = 15.4398
+height = 51.0122
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="icon" type="Sprite" parent="."]
+position = Vector2( 7.29284, 1.35089 )
 rotation = 1.5708
-scale = Vector2( 0.332925, 0.66585 )
+scale = Vector2( 0.329273, 0.497051 )
 z_index = -1
 texture = ExtResource( 2 )
 
