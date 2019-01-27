@@ -46,6 +46,7 @@ editor/display_folded = true
 [node name="PillowTimer" type="Timer" parent="PillowPlayer"]
 
 [node name="MarblesPlayer" type="AudioStreamPlayer" parent="."]
+editor/display_folded = true
 
 [node name="MarblesTimer" type="Timer" parent="MarblesPlayer"]
 
@@ -56,7 +57,12 @@ editor/display_folded = true
 
 [node name="SpawnTimer" type="Timer" parent="SpawnPlayer"]
 
+[node name="GameOverPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="GameOverTimer" type="Timer" parent="GameOverPlayer"]
+
 [connection signal="timeout" from="DeathPlayer/DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="timeout" from="PillowPlayer/PillowTimer" to="." method="_on_PillowPlayer_timeout"]
 [connection signal="timeout" from="MarblesPlayer/MarblesTimer" to="." method="_on_MarblesTimer_timeout"]
 [connection signal="timeout" from="SpawnPlayer/SpawnTimer" to="." method="_on_DeathTimer_timeout"]
+[connection signal="timeout" from="GameOverPlayer/GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
