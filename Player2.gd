@@ -52,15 +52,20 @@ func _physics_process(delta):
 
 		direction=motion.angle()
 
-		if(motion < Vector2(1, 1) and motion > Vector2(-1, -1) ):
-			if $AnimationPlayer.current_animation != "idle":
-				$AnimationPlayer.play("idle")
+		if (motion.x<5 and motion.x >-5) and (motion.y<5 and motion.y >-5):
+			$AnimatedSprite.play("idle")
+		else:
+			$AnimatedSprite.play("walk")
+		
+		if motion.x >0:
+			$AnimatedSprite.flip_h=true
 		else:
 			$AnimatedSprite.flip_h=false
 		
 		if Input.is_action_pressed(action_shoot):
 			$AnimatedSprite.play("attack")
 			shoot_bullet()
+			
 		move_and_collide(motion * delta)
 
 
