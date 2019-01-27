@@ -12,22 +12,25 @@ export var action_left="ui_left"
 export var action_shoot="ui_accept"
 export var ACCELERATION=50
 export var MAX_SPEED=300
+const FIRE_RATE=0.5
+var can_shoot=true
 var bullet_scene = preload ("res://Bullet.tscn")
 signal health_changed(health)
 
 
 func shoot_bullet():
-	var bullet= bullet_scene.instance()
-	get_parent().add_child(bullet)
-	bullet.set_rotation(direction)
-	bullet.direction=direction
-	bullet.set_global_position(get_global_position())
+	if can_shoot:
+		can_shoot=false
+		$fire_rate.start(FIRE_RATE)
+		var bullet= bullet_scene.instance()
+		get_parent().add_child(bullet)
+		bullet.set_rotation(direction)
+		bullet.direction=direction
+		bullet.set_global_position(get_global_position())
 
 func _physics_process(delta):
 
 	if !dead:
-		if Input.is_action_just_pressed(action_shoot):
-			shoot_bullet()
 
 		if Input.is_action_pressed(action_right):
 			motion.x= min(motion.x + ACCELERATION, MAX_SPEED)
@@ -45,13 +48,20 @@ func _physics_process(delta):
 
 		direction=motion.angle()
 
-		if(motion < Vector2(1, 1) and motion > Vector2(-1, -1) ):
-			if $AnimationPlayer.current_animation != "idle":
-				$AnimationPlayer.play("idle")
+		if (motion.x<5 and motion.x >-5) and (motion.y<5 and motion.y >-5):
+			$AnimatedSprite.play("idle")
 		else:
-			if ($AnimationPlayer.current_animation != "Move"):
-				$AnimationPlayer.play("Move")
-
+			$AnimatedSprite.play("walk")
+		
+		if motion.x >0:
+			$AnimatedSprite.flip_h=true
+		else:
+			$AnimatedSprite.flip_h=false
+		
+		if Input.is_action_pressed(action_shoot):
+			$AnimatedSprite.play("attack")
+			shoot_bullet()
+			
 		move_and_collide(motion * delta)
 
 
@@ -84,3 +94,6 @@ func take_damage():
 
 func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):
 	pass
+
+func _on_fire_rate_timeout():
+	can_shoot=true
