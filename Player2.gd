@@ -70,7 +70,7 @@ func _physics_process(delta):
 
 
 	else:
-		$AnimationPlayer.play("idle")
+		$AnimatedSprite.play("idle")
 		$CollisionShape2D.disabled = true
 
 

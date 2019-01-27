@@ -7,6 +7,7 @@
 
 resource_name = "SpawnerAnimation"
 length = 19.5
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1

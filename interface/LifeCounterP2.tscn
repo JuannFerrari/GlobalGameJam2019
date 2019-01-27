@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/bg_counter.png" type="Texture" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/frames/jerry/jerryicon.png" type="Texture" id=2]
 [ext_resource path="res://interface/themes/default_theme.tres" type="Theme" id=3]
 
 [node name="LifeCounterP2" type="NinePatchRect"]

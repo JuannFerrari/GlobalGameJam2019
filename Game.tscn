@@ -27,3 +27,5 @@ action_left = "ui_left2"
 
 [connection signal="health_changed" from="Player1" to="Interface" method="_on_Player1_health_changed"]
 [connection signal="hide" from="Player1" to="Interface" method="_on_Player_hide"]
+[connection signal="health_changed" from="Player2" to="Interface" method="_on_Player2_health_changed"]
+[connection signal="game_over" from="Spawner" to="Interface" method="_on_Spawner_game_over"]

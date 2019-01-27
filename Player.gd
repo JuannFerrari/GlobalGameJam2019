@@ -63,10 +63,8 @@ func _physics_process(delta):
 			shoot_bullet()
 			
 		move_and_collide(motion * delta)
-
-
 	else:
-		$AnimationPlayer.play("idle")
+		$AnimatedSprite.play("idle")
 		$CollisionShape2D.disabled = true
 
 
