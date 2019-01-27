@@ -60,5 +60,4 @@ func take_damage(damage):
 
 func _on_EnemyOne_body_entered(body):
 	body.take_damage()
-	emit_signal("self_killed")
 	queue_free()
