@@ -9,19 +9,23 @@
 [node name="Game" type="SkeletonIK"]
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 298.5, 174 )
-action_shoot = "ui_accept2"
+position = Vector2( 861.381, 227.186 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 250, 250 )
+position = Vector2( 370.776, 261.08 )
 action_up = "ui_up2"
 action_down = "ui_down2"
 action_right = "ui_right2"
 action_left = "ui_left2"
+action_shoot = "ui_accept2"
 
 [node name="Map" parent="." instance=ExtResource( 3 )]
 
 [node name="Interface" parent="." instance=ExtResource( 4 )]
+margin_left = -1.10803
+margin_top = -0.47864
+margin_right = -1.10803
+margin_bottom = -0.478638
 
 [node name="Spawner" parent="." instance=ExtResource( 5 )]
 

@@ -3,7 +3,7 @@ extends Area2D
 
 const VEL=500
 export var direction = 0
-const damage=8
+const damage=20
 signal fired
 
 func _ready():

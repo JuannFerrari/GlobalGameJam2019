@@ -57,6 +57,8 @@ editor/display_folded = true
 
 [node name="SpawnTimer" type="Timer" parent="SpawnPlayer"]
 
+[node name="OofPlayer" type="AudioStreamPlayer" parent="."]
+
 [node name="GameOverPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="GameOverTimer" type="Timer" parent="GameOverPlayer"]

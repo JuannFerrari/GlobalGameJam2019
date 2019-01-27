@@ -4,6 +4,7 @@ var motion=Vector2()
 var direction=0
 export var life = 5
 var dead = false
+var notified_death = false
 var can_take_damage = true
 export var action_up="ui_up"
 export var action_down="ui_down"
@@ -30,8 +31,7 @@ func shoot_bullet():
 
 func _physics_process(delta):
 
-	if !dead:
-
+	if life>0:
 		if Input.is_action_pressed(action_right):
 			motion.x= min(motion.x + ACCELERATION, MAX_SPEED)
 		elif Input.is_action_pressed(action_left):
@@ -64,17 +64,27 @@ func _physics_process(delta):
 			
 		move_and_collide(motion * delta)
 	else:
-		$AnimatedSprite.play("dead")
-		$CollisionShape2D.disabled = true
+		die()
+		
 
 
 func _on_invul_timer_timeout():
-	can_take_damage=true
 	if !dead:
+		can_take_damage=true
 		modulate = Color(1,1,1,1)
-	$CollisionShape2D.disabled = false
+		$CollisionShape2D.disabled = false
 
-
+func die():
+	$CollisionShape2D.disabled = true
+	if !notified_death:
+		notified_death = true
+		dead = true
+		modulate= Color(1,1,1,1)
+		$AnimatedSprite.flip_h=false
+		$DeathSound.play()
+		$AnimatedSprite.play("dead")
+		$CollisionShape2D.disabled = true
+		can_take_damage=false
 
 func take_damage():
 	if can_take_damage:
@@ -86,10 +96,7 @@ func take_damage():
 		$CollisionShape2D.disabled = true
 
 	if life<=0:
-		dead = true
-		can_take_damage=false
-		modulate= Color(1,1,1,1)
-		$AnimatedSprite.flip_h=false
+		die()
 		#is now ded blep
 
 func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):

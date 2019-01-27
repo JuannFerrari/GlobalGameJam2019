@@ -1,7 +1,7 @@
 extends Area2D
 
 const VEL=1000
-const damage=3
+const damage=4
 
 
 export var direction=0
@@ -21,7 +21,7 @@ func _process(delta):
 	position=position+motion*delta
 
 func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()	
+	queue_free()
 
 
 

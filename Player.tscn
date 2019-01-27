@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/frames/tom/tomidle.png" type="Texture" id=2]
 [ext_resource path="res://assets/frames/rip.png" type="Texture" id=3]
-[ext_resource path="res://assets/frames/tom/tomattack.png" type="Texture" id=4]
-[ext_resource path="res://assets/frames/tom/tomwalk.png" type="Texture" id=5]
+[ext_resource path="res://assets/frames/tom/tomwalk.png" type="Texture" id=4]
+[ext_resource path="res://assets/frames/tom/tomattack.png" type="Texture" id=5]
+[ext_resource path="res://sounds/oof.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -57,12 +58,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "attack",
+"name": "walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "walk",
+"name": "attack",
 "speed": 5.0
 } ]
 
@@ -98,6 +99,9 @@ frames = SubResource( 6 )
 animation = "idle"
 
 [node name="fire_rate" type="Timer" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="timeout" from="invul_timer" to="." method="_on_invul_timer_timeout"]
 [connection signal="area_shape_entered" from="Hitbox" to="." method="_on_Hitbox_area_shape_entered"]
